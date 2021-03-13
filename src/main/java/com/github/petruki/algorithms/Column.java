@@ -6,16 +6,12 @@ import com.github.petruki.model.Position;
 public class Column<T> extends AbstractAlgorithm<T> {
 	
 	public Column() {
-		pos = new Position();
-		pos.row = -1;
-		pos.col = 0;
-		pos.direction = Directions.DOWN;
+		super(new Position(-1, 0, Directions.DOWN));
 	}
 	
 	@Override
 	public void fillDown(T[][] matrix, T value) {
-		if (pos.row < matrix.length - 1 && 
-				matrix[pos.row + 1][pos.col] == null) {
+		if (canGoDown(matrix, value)) {
 			pos.row++;
 		} else {
 			pos.direction = Directions.UP;
@@ -27,7 +23,7 @@ public class Column<T> extends AbstractAlgorithm<T> {
 	
 	@Override
 	public void fillUp(T[][] matrix, T value) {
-		if (pos.row > 0 && matrix[pos.row - 1][pos.col] == null) {
+		if (canGoUp(matrix, value)) {
 			pos.row--;
 		} else {
 			pos.direction = Directions.DOWN;

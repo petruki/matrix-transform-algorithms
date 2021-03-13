@@ -6,16 +6,12 @@ import com.github.petruki.model.Position;
 public class InvertedSpiral<T> extends AbstractAlgorithm<T> {
 	
 	public InvertedSpiral() {
-		pos = new Position();
-		pos.row = -1;
-		pos.col = 0;
-		pos.direction = Directions.DOWN;
+		super(new Position(-1, 0, Directions.DOWN));
 	}
 	
 	@Override
 	public void fillRight(T[][] matrix, T value) {
-		if (pos.col < matrix[pos.row].length - 1 && 
-				matrix[pos.row][pos.col + 1] == null) {
+		if (canGoRight(matrix, value)) {
 			pos.col++;
 		} else {
 			pos.direction = Directions.UP;
@@ -27,8 +23,7 @@ public class InvertedSpiral<T> extends AbstractAlgorithm<T> {
 	
 	@Override
 	public void fillDown(T[][] matrix, T value) {
-		if (pos.row < matrix.length - 1 && 
-				matrix[pos.row + 1][pos.col] == null) {
+		if (canGoDown(matrix, value)) {
 			pos.row++;
 		} else {
 			pos.direction = Directions.RIGHT;
@@ -40,7 +35,7 @@ public class InvertedSpiral<T> extends AbstractAlgorithm<T> {
 	
 	@Override
 	public void fillLeft(T[][] matrix, T value) {
-		if (pos.col > 0 && matrix[pos.row][pos.col - 1] == null) {
+		if (canGoLeft(matrix, value)) {
 			pos.col--;
 		} else {
 			pos.direction = Directions.DOWN;

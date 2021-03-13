@@ -25,20 +25,7 @@ public class MatrixTransformer<T> {
 		
 		for (T[] source_row : source) {
 			for (T value : source_row) {
-				switch (algorithm.getPos().direction) {
-				case RIGHT:
-					algorithm.fillRight(matrix, value);
-					break;
-				case DOWN:
-					algorithm.fillDown(matrix, value);
-					break;
-				case LEFT:
-					algorithm.fillLeft(matrix, value);
-					break;
-				case UP:
-					algorithm.fillUp(matrix, value);
-					break;
-				}
+				algorithm.fill(matrix, value);
 			}
 		}
 		

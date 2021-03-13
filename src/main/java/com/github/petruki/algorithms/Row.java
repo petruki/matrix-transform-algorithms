@@ -6,16 +6,12 @@ import com.github.petruki.model.Position;
 public class Row<T> extends AbstractAlgorithm<T> {
 	
 	public Row() {
-		pos = new Position();
-		pos.row = 0;
-		pos.col = -1;
-		pos.direction = Directions.RIGHT;
+		super(new Position(0, -1, Directions.RIGHT));
 	}
 	
 	@Override
 	public void fillRight(T[][] matrix, T value) {
-		if (pos.col < matrix[pos.row].length - 1 && 
-				matrix[pos.row][pos.col + 1] == null) {
+		if (canGoRight(matrix, value)) {
 			pos.col++;
 		} else {
 			pos.direction = Directions.LEFT;
@@ -27,7 +23,7 @@ public class Row<T> extends AbstractAlgorithm<T> {
 	
 	@Override
 	public void fillLeft(T[][] matrix, T value) {
-		if (pos.col > 0 && matrix[pos.row][pos.col - 1] == null) {
+		if (canGoLeft(matrix, value)) {
 			pos.col--;
 		} else {
 			pos.direction = Directions.RIGHT;

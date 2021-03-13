@@ -6,16 +6,12 @@ import com.github.petruki.model.Position;
 public class Spiral<T> extends AbstractAlgorithm<T> {
 	
 	public Spiral() {
-		pos = new Position();
-		pos.row = 0;
-		pos.col = -1;
-		pos.direction = Directions.RIGHT;
+		super(new Position(0, -1, Directions.RIGHT));
 	}
 	
 	@Override
 	public void fillRight(T[][] matrix, T value) {
-		if (pos.col < matrix[pos.row].length - 1 && 
-				matrix[pos.row][pos.col + 1] == null) {
+		if (canGoRight(matrix, value)) {
 			pos.col++;
 		} else {
 			pos.direction = Directions.DOWN;
@@ -27,8 +23,7 @@ public class Spiral<T> extends AbstractAlgorithm<T> {
 	
 	@Override
 	public void fillDown(T[][] matrix, T value) {
-		if (pos.row < matrix.length - 1 && 
-				matrix[pos.row + 1][pos.col] == null) {
+		if (canGoDown(matrix, value)) {
 			pos.row++;
 		} else {
 			pos.direction = Directions.LEFT;
@@ -40,7 +35,7 @@ public class Spiral<T> extends AbstractAlgorithm<T> {
 	
 	@Override
 	public void fillLeft(T[][] matrix, T value) {
-		if (pos.col > 0 && matrix[pos.row][pos.col - 1] == null) {
+		if (canGoLeft(matrix, value)) {
 			pos.col--;
 		} else {
 			pos.direction = Directions.UP;
@@ -52,7 +47,7 @@ public class Spiral<T> extends AbstractAlgorithm<T> {
 	
 	@Override
 	public void fillUp(T[][] matrix, T value) {
-		if (pos.row > 0 && matrix[pos.row - 1][pos.col] == null) {
+		if (canGoUp(matrix, value)) {
 			pos.row--;
 		} else {
 			pos.direction = Directions.RIGHT;
