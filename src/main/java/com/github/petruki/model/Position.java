@@ -1,4 +1,4 @@
-package com.douglas.roger.model;
+package com.github.petruki.model;
 
 public class Position {
 	public int row = 0;

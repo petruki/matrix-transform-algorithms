@@ -1,15 +1,15 @@
-package com.douglas.roger.algorithms;
+package com.github.petruki.algorithms;
 
-import com.douglas.roger.model.Directions;
-import com.douglas.roger.model.Position;
+import com.github.petruki.model.Directions;
+import com.github.petruki.model.Position;
 
-public class Spiral<T> extends AbstractAlgorithm<T> {
+public class InvertedSpiral<T> extends AbstractAlgorithm<T> {
 	
-	public Spiral() {
+	public InvertedSpiral() {
 		pos = new Position();
-		pos.row = 0;
-		pos.col = -1;
-		pos.direction = Directions.RIGHT;
+		pos.row = -1;
+		pos.col = 0;
+		pos.direction = Directions.DOWN;
 	}
 	
 	@Override
@@ -18,8 +18,8 @@ public class Spiral<T> extends AbstractAlgorithm<T> {
 				matrix[pos.row][pos.col + 1] == null) {
 			pos.col++;
 		} else {
-			pos.direction = Directions.DOWN;
-			pos.row++;
+			pos.direction = Directions.UP;
+			pos.row--;
 		}
 		
 		matrix[pos.row][pos.col] = value;
@@ -31,8 +31,8 @@ public class Spiral<T> extends AbstractAlgorithm<T> {
 				matrix[pos.row + 1][pos.col] == null) {
 			pos.row++;
 		} else {
-			pos.direction = Directions.LEFT;
-			pos.col--;
+			pos.direction = Directions.RIGHT;
+			pos.col++;
 		}
 		
 		matrix[pos.row][pos.col] = value;
@@ -43,8 +43,8 @@ public class Spiral<T> extends AbstractAlgorithm<T> {
 		if (pos.col > 0 && matrix[pos.row][pos.col - 1] == null) {
 			pos.col--;
 		} else {
-			pos.direction = Directions.UP;
-			pos.row--;
+			pos.direction = Directions.DOWN;
+			pos.row++;
 		}
 		
 		matrix[pos.row][pos.col] = value;
@@ -55,8 +55,8 @@ public class Spiral<T> extends AbstractAlgorithm<T> {
 		if (pos.row > 0 && matrix[pos.row - 1][pos.col] == null) {
 			pos.row--;
 		} else {
-			pos.direction = Directions.RIGHT;
-			pos.col++;
+			pos.direction = Directions.LEFT;
+			pos.col--;
 		}
 		
 		matrix[pos.row][pos.col] = value;

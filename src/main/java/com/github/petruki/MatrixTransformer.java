@@ -1,10 +1,10 @@
-package com.douglas.roger;
+package com.github.petruki;
 
 import java.lang.reflect.Array;
 import java.security.InvalidAlgorithmParameterException;
 import java.util.Arrays;
 
-import com.douglas.roger.algorithms.AbstractAlgorithm;
+import com.github.petruki.algorithms.AbstractAlgorithm;
 
 /**
  * @author Roger Floriano (petruki)

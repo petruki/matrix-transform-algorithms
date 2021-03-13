@@ -1,8 +1,8 @@
-package com.douglas.roger;
+package com.github.petruki;
 
 import java.security.InvalidAlgorithmParameterException;
 
-import com.douglas.roger.algorithms.Spiral;
+import com.github.petruki.algorithms.Spiral;
 
 public class MatrixAppInitializer {
 	

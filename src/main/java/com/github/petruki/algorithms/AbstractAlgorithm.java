@@ -1,8 +1,8 @@
-package com.douglas.roger.algorithms;
+package com.github.petruki.algorithms;
 
 import java.security.InvalidAlgorithmParameterException;
 
-import com.douglas.roger.model.Position;
+import com.github.petruki.model.Position;
 
 public abstract class AbstractAlgorithm<T> {
 	

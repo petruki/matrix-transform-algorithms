@@ -1,4 +1,4 @@
-package com.douglas.roger.model;
+package com.github.petruki.model;
 
 public enum Directions {
 	RIGHT,

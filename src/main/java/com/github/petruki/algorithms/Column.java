@@ -1,7 +1,7 @@
-package com.douglas.roger.algorithms;
+package com.github.petruki.algorithms;
 
-import com.douglas.roger.model.Directions;
-import com.douglas.roger.model.Position;
+import com.github.petruki.model.Directions;
+import com.github.petruki.model.Position;
 
 public class Column<T> extends AbstractAlgorithm<T> {
 	

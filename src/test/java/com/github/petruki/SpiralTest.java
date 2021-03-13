@@ -1,4 +1,4 @@
-package com.douglas.roger;
+package com.github.petruki;
 
 import java.security.InvalidAlgorithmParameterException;
 import java.util.stream.Stream;
@@ -9,7 +9,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import com.douglas.roger.algorithms.Spiral;
+import com.github.petruki.MatrixTransformer;
+import com.github.petruki.algorithms.Spiral;
 
 public class SpiralTest {
 
