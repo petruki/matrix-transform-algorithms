@@ -1,15 +1,17 @@
 package com.github.petruki;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+
 import java.security.InvalidAlgorithmParameterException;
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.*;
+import javax.management.InvalidAttributeValueException;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import com.github.petruki.MatrixTransformer;
 import com.github.petruki.algorithms.Spiral;
 
 public class SpiralTest {
@@ -20,9 +22,14 @@ public class SpiralTest {
 	void init() {
 		instance = new MatrixTransformer<>(new Spiral<>());
 	}
-
+	
 	static Stream<Arguments> matrixFixtures() {
 		return Stream.of(
+				Arguments.of(null, null),
+				Arguments.of(
+						new Integer[][] { {} }, new Integer[][] { {} }),
+				Arguments.of(
+						new Integer[][] { {1} }, new Integer[][] { {1} }),
 				Arguments.of(
 						new Integer[][] {
 							{1, 2, 3},
@@ -113,7 +120,7 @@ public class SpiralTest {
 	@ParameterizedTest()
 	@MethodSource("matrixFixtures")
 	void testConvertion(Integer [][] source, Integer[][] expected) 
-			throws InvalidAlgorithmParameterException {
+			throws InvalidAlgorithmParameterException, InvalidAttributeValueException {
 		Integer[][] actual = instance.transform(source);
 		assertArrayEquals(expected, actual);
 	}

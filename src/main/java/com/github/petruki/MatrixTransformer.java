@@ -17,8 +17,17 @@ public class MatrixTransformer<T> {
 		this.algorithm = algorithm;
 	}
 	
+	private boolean validate(T[][] source) {
+		return source == null || source.length == 0 || source[0].length == 0;
+	}
+	
 	@SuppressWarnings("unchecked")
-	public T[][] transform(T[][] source) throws InvalidAlgorithmParameterException {
+	public T[][] transform(T[][] source) 
+			throws InvalidAlgorithmParameterException {
+		
+		if (validate(source))
+			return source;
+		
 		T[][] matrix = (T[][]) Array.newInstance(
 				source[0][0].getClass(), source.length, source[0].length);
 		Arrays.stream(matrix).forEach(r -> Arrays.fill(r, null));
